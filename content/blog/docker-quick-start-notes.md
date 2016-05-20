@@ -5,6 +5,8 @@ tags = ["containers", "docker", "technology", "lxc", "virtualization", "cloud", 
 type = "post"
 +++
 
+* Update *: Blog updated to use latest way to install docker.
+
 After reading about docker and containers, I thought let's try them out.
 Here are my notes. Obviously all of them are taken from Internet. Maybe this
 collection here will help someone start with docker faster than spending time
@@ -14,9 +16,13 @@ It assumes your base OS is Ubuntu 14.04 Trusty Tahr (when was the last time
 you saw the codename spelled 'Trusty Tahr' and not 'Trusty'? :) ).
 
 
+Ensure kernel version is more than 3.10
+
+    uname -r
+
 Install docker
 
-    sudo apt-get install docker.io
+    curl -sSL https://get.docker.com/ | sh
 
 See docker version
 
@@ -65,7 +71,7 @@ container which you ran
 
     sudo docker commit <container ID> <yourname>/echo
 
-Now running `sudo docker images` will list you two containers instead of one
+Now running `sudo docker images` will list you two images instead of one
 
 Now you can run this new docker container like this:
 
