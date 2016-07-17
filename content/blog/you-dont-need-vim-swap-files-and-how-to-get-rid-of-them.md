@@ -38,17 +38,17 @@ self-explanatory.
 
     # Enable autosave plugin
     let g:auto_save = 1
-    
+
     # Only save in Normal mode periodically. If the value is changed to '1',
     # then changes are saved when you are in Insert mode too, as you type, but
     # I would say prefer not save in Insert mode
     let g:auto_save_in_insert_mode = 0
-    
+
     # Silently autosave. If you disable this option by changing value to '0',
     # then in the vim status, it will display "(AutoSaved at <current time>)" all
     # the time, which might get annoying
     let g:auto_save_silent = 1
-    
+
     # And now turn Vim swapfile off
     set noswapfile
 
@@ -57,10 +57,9 @@ self-explanatory.
 There are a few things to note when you switch to this 'autosave, no swap
 files' mode:
 
-1. You can't just do a `:q!` to exit without writing your unsaved changes.
-   Autosave already has saved your changes, so the only real way to discard
-   your changes is to undo all the changes you've made (`u` key) and then exit
-   the file.
+1. You can't just do a `:q!` to discard unsaved changes.  Autosave already has
+   saved your changes! So the only real way to discard your changes is to undo
+   all the changes you've made (`u` key) and then exit the file.
 2. Earlier, you can't modify a Vim file which is already open in another
    terminal. Now too Vim will throw a warning message. The difference is how
    you're notified of it. Previously, even before opening the file Vim will say
