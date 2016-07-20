@@ -4,7 +4,7 @@ Description = ""
 Tags = ["Development", "trick"]
 date = "2016-07-20T23:18:24+05:30"
 type = "post"
-title = "Make shared folders work in Vagrant for Mac OS X host with Ubuntu Xenial guest"
+title = "Make Vagrant Synced folders on Ubuntu Xenial guest work on Mac"
 
 +++
 
