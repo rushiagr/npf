@@ -33,6 +33,7 @@ Of course I'm assuming you're running Vagrant with VirtualBox :)
 After that just shut down the VM (`vagrant halt <vmname>`), and start it again
 (`vagrant up <vmname>`), and everything should work as expected. I noticed two
 things:
+
 1. Vagrant tries to install guest additions inside the VM by doing some
    `apt-get` stuff. Don't worry about it and let it finish.
 2. Note that unlike Ubuntu Trusty (14.04), my hostname on Ubuntu Xenial is
