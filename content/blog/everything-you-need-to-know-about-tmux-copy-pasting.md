@@ -12,7 +12,7 @@ Copying from a Tmux session is something every Tmux user struggled with once.
 I'm listing out all the stuff I learnt in this blog.
 
 I tested everything on Mac OS X El Capitan, which runs Tmux version 2.1. To
-check your Tmux version, run `tmux -V`. If you have a Linux (e.g. Ubuntu) machine, go
+check your Tmux version, run `tmux -V`. If you have a Linux (e.g. Ubuntu) machine, see
 [here](http://www.rushiagr.com/blog/2016/06/16/everything-you-need-to-know-about-tmux-copy-pasting-ubuntu/).
 
 ## Know about your terminal
@@ -25,7 +25,7 @@ copy-paste to work in Terminal, and I'll provide steps for that).
 ## Know about copy buffers
 When you do a `Command`+`c`, the stuff you copy is stored in your computer's
 buffer, called 'clipboard' from where you can paste anywhere by doing a
-`Command`+'v'. Tmux has it's own buffer for coppying, which we'll
+`Command`+`v`. Tmux has it's own buffer for coppying, which we'll
 call 'tmux buffer'. Our goal is to understand in a Tmux session how to copy to
 tmux buffer, and also to clipboard.
 
