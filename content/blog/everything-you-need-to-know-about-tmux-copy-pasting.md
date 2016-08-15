@@ -13,7 +13,7 @@ I'm listing out all the stuff I learnt in this blog.
 
 I tested everything on Mac OS X El Capitan, which runs Tmux version 2.1. To
 check your Tmux version, run `tmux -V`. If you have a Linux (e.g. Ubuntu) machine, go
-(here)[http://www.rushiagr.com/blog/2016/06/16/everything-you-need-to-know-about-tmux-copy-pasting-ubuntu/].
+[here](http://www.rushiagr.com/blog/2016/06/16/everything-you-need-to-know-about-tmux-copy-pasting-ubuntu/).
 
 ## Know about your terminal
 The default terminal which comes with Mac is pretty limiting. Instead of
@@ -68,7 +68,7 @@ In newer iTerm2, you need to enable one option in settings to copy a text into
 both tmux buffer and clipboard at the same time. Go to iTerm2 > Preferences >
 "General" tab, and in the "Selection" section, check the box which says
 "Applications in terminal may access clipboard" if it isn't checked. See
-(here)[http://apple.stackexchange.com/a/248828] for a screenshot.
+[here](http://apple.stackexchange.com/a/248828) for a screenshot.
 
 ## Tmux copy with mouse drag!
 You can enable 'mouse mode', using which you can copy text into tmux buffer by
@@ -106,7 +106,7 @@ Tmux session, but as stated previously, you won't be able to copy text which is
 
 Generally I'm satisfied with the limitation mentioned here. In order to get
 full copying from remote session working, you will need to do something more
-involved, like (here)[http://superuser.com/a/408374/315134]. Do let me know if
+involved, like [here](http://superuser.com/a/408374/315134). Do let me know if
 you need a better explanation of that method (e.g. more details on SSH keys and
 enabling remote option on Mac OS X)
 

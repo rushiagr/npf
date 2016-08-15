@@ -13,7 +13,7 @@ I'm listing out all the stuff I learnt in this blog.
 
 I tested everything on Ubuntu 14.04 Trusty Tahr, which runs Tmux version 1.8.
 To check your Tmux version, run `tmux -V`. If you have a Mac, go
-(here)[http://www.rushiagr.com/blog/2016/06/16/everything-you-need-to-know-about-tmux-copy-pasting/].
+[here](http://www.rushiagr.com/blog/2016/06/16/everything-you-need-to-know-about-tmux-copy-pasting/).
 
 ## Know about copy buffers
 When you do a `CTRL`+`c`, the stuff you copy is stored in your computer's
