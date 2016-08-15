@@ -1,111 +1,116 @@
 +++
 Categories = ["Development", "Productivity"]
 Description = ""
-Tags = ["Development", "tmux", "ubuntu", "productivity", "quickstart", "tutorial"]
+Tags = ["Development", "tmux", "apple", "productivity", "quickstart", "tutorial"]
 date = "2016-06-16T10:58:02+05:30"
-title = "Everything you need to know about Tmux copy pasting"
+title = "Everything you need to know about Tmux copy paste - Mac OS"
 type = "post"
 
 +++
 
-Note: It is best if you actually execute steps in this tutorial along with
-reading it
+Copying from a Tmux session is something every Tmux user struggled with once.
+I'm listing out all the stuff I learnt in this blog.
 
-Estimated reading time: 30 minutes if performing a hands-on. Else 10 minutes.
+I tested everything on Mac OS X El Capitan, which runs Tmux version 2.1. To
+check your Tmux version, run `tmux -V`. If you have a Linux (e.g. Ubuntu) machine, go
+(here)[http://www.rushiagr.com/blog/2016/06/16/everything-you-need-to-know-about-tmux-copy-pasting-ubuntu/].
 
-Note: This Guide is written by running commands on Ubuntu Trusty (14.04), which
-comes with Tmux version 1.8. For later versions of Tmux, things which are
-different are mentioned at appropriate places .  You can check Tmux version
-with `tmux -V` command. Please feel free to comment if you find something
-missing or wrong, or know something worth adding.
+## Know about your terminal
+The default terminal which comes with Mac is pretty limiting. Instead of
+listing the limitations (and workarounds around it), I'll just say that before
+you proceed, please install iTerm 2 and start using that immediately. What I'm
+writing below is all for iTerm 2. (Do let me know if you absolutely need Tmux
+copy-paste to work in Terminal, and I'll provide steps for that).
 
-### Tmux copy-paste - the defaults
-I'm going to explain you the tmux defaults in this section, but don't remember
-any of it! The following methods are slightly involved, so we will soon create
-Tmux shortcuts for them which are easier to remember. More so, they are
-Vim-like, so if you are a Vim user, you'll need to learn even less new
-stuff :)
+## Know about copy buffers
+When you do a `Command`+`c`, the stuff you copy is stored in your computer's
+buffer, called 'clipboard' from where you can paste anywhere by doing a
+`Command`+'v'. Tmux has it's own buffer for coppying, which we'll
+call 'tmux buffer'. Our goal is to understand in a Tmux session how to copy to
+tmux buffer, and also to clipboard.
 
-1. Enter 'copy mode'. This is the mode in which you can move the cursor
-   anywhere on the screen. Do this by pressing the 'prefix' (`CTRL`+`b`), and
-   then pressing `[` key. So basically press `CTRL` and then `j` while holding
-   the `CTRL` button, then release both keys, and then press `[` key. Such
-   sequence will be mentioned as `CTRL`+'b', `[` from now on for other such
-   sequences too.
-2. Now use the arrow keys to go to the start of the text you want to copy, and
-   then press `CTRL`+`SPACE`, or `SHIFT`+`SPACE`. The cursor should now change
-   to yellow colour, meaning it has started highlighting.
-3. Now using arrow keys, move to the point till where you want to copy, and
-   then press `ENTER`. Alternatively, you can press `ALT` + `w`.
-4. Now you can paste the copied text by doing `CTRL`+`b`, `]`.
+You can always copy stuff into clipboard while usin Tmux. "Why do I need a Tmux
+buffer then", you might wonder. This is because, in your shell, the text you
+want to select might not fit in your current screen (e.g. output of `cat
+/etc/passwd` file). If you copy normally, you will only be able to copy text
+visible on your screen, and not the output which is 'scrolled up' due to a lot
+of output.
 
-### Tmux Vim-bindings for copy and paste
-1. Add these lines file by name ~/.tmux.conf.
+## Tmux copy-paste - the defaults
+Well, the defaults in Mac are horrible. There is simply no way to copy into
+tmux buffer without using any external plugin. BUT you can copy stuff into
+system clipboard by just using your mouse for selecting text.
+
+## Tmux Vim-bindings for copying into tmux buffer
+Adding configuration described in this section will give you easier shortcuts
+for copy-pasting in Tmux. Moreover, these shortcuts work very similar to Vim's
+copy-pasting shortcuts!
+
+1. Add these lines in a file by name `~/.tmux.conf`.
 
         bind P paste-buffer
         bind-key -t vi-copy 'v' begin-selection
         bind-key -t vi-copy 'y' copy-selection
         bind-key -t vi-copy 'r' rectangle-toggle
 
-2. Now you can enter copy mode as described above (`CTRL`+`b`,`[`), and then go
-   to start point and press 'v' to start copying. After you have selected text
-   you want to copy, you can just press 'y' to copy the text into Tmux's
-   buffer. This is exactly the commands you would use in Vim to copy text.
+2. Now you can enter copy mode by pressing `CTRL`+`b`,`[`, and then go
+   to start point, press 'v' and start copying. After you have selected text
+   you want to copy, you can just press 'y' (or the default 'enter' key) to
+   copy the text into Tmux's buffer. This is exactly the commands you would use
+   in Vim to copy text.
 3. To paste, press `CTRL`+`b`,`P`. Note that it's capital 'p' (i.e.
    `SHIFT`+`p`). This again is similar to Vim's shortcut 'p' for paste, though
    not exactly similar. You'll realize in your Tmux journey why didn't we use a
    small 'p' instead of a capital 'P' ;)
 
-Before we move ahead, I want to tell you that Tmux's copy buffer is independent
-of system clipboard (at least on Tmux 1.8. In Tmux 2.0 this seems to be no
-longer the case on El Capitan Mac. I unfortunately don't have an Ubuntu Desktop
-handy). That is, whatever you copied using `CTRL`+`c` command, it'll still be
-pasted when you do a `CTRL`+`v`, and the stuff you copied in Tmux using Tmux's
-way to copy stuff won't be available by default outside of that Tmux session.
-But you can change that behavior. I've now started to use Mac, and somehow it
-just works in it, so I don't really know how to make it work in Ubuntu any more
-:(. I 'guess' if you follow steps in 'Copy from remote server', you'll get it
-working. Do let me know if you are trying it!
+## Copy from tmux buffer to system buffer (clipboard)
+In newer iTerm2, you need to enable one option in settings to copy a text into
+both tmux buffer and clipboard at the same time. Go to iTerm2 > Preferences >
+"General" tab, and in the "Selection" section, check the box which says
+"Applications in terminal may access clipboard" if it isn't checked. See
+(here)[http://apple.stackexchange.com/a/248828] for a screenshot.
 
-### Tmux copy with mouse drag!
-You can enable what is called as 'mouse mode'. Using it, you can just select
-text by dragging mouse and making a selection. For doin that, you just need to
-add these lines to your `~/.tmux.conf` file:
-
-    setw -g mode-mouse on
-    set -g mouse-select-window on
-
-Note that this works only with Tmux version 1.8 or earlier. For later versions
-of Tmux, just add this single line:
+## Tmux copy with mouse drag!
+You can enable 'mouse mode', using which you can copy text into tmux buffer by
+mouse drag. For doing that, you just need to add this line to your
+`~/.tmux.conf` file:
 
     set -g mouse on
 
-### But now I can't do normal copy-paste with mouse!
+## But now I can't do normal copy-paste with mouse!
 You'll notice that now all your selections will go to tmux buffer, and not
-system's buffer (called 'clipboard'). The solution is very simple -- just use
-`SHIFT` button (and on Macs, use `ALT` button).
+clipboard buffer. Of course, you can enable copying to system clipboard as
+described in a section above. However, you can notice that you can't double
+click to select a complete word with vi's tmux copy-pasting shortcuts + mouse
+option enabled.
 
-This is all what you need to know if you are using only your local computer.
-But if you are a developer, there is a chance you might be dealing with remote
-servers over SSH, and might want to copy text in Tmux on a remote server, and
-have it accessible locally. For example you might want to copy an error message
-from remote server and send it over to your colleague over chat from you local
-computer. There is a way to do that too!
-
-### Copy from a remote server
-You will need to install `xclip` on the remote server and local computer too.
-On Ubuntu, this can be done by doing `sudo apt-get install xclip`. Add this
-line to your `~/.tmux.conf` file:
-
-    bind -t vi-copy y copy-pipe "xclip -sel clip -i"
+Just press `Option` (Alt) button when copying, and now you can copy as if Tmux
+doesn't exist! :)
 
 
-Then SSH on the remote server using -X option:
+## Copy from a remote server
+Now if your remote server is a Linux machine (e.g. an Ubuntu server), then
+getting that remote server's tmux buffer copied into our local Mac's clipboard
+makes for an interesting story! If the iTerm setting to allow applications in
+terminal to access clipboard is enabled, then if you are running a tmux session
+on remote server, and you copy stuff there into the tmux buffer of that system,
+the copied text is already into your local system's clipboard! Amazing! BUT but
+but, this only works if you are connecting to the remote machine directly from
+your terminal, i.e. not from inside a local Tmux session!! If you have a local
+Tmux session, and then you SSH into remote machine, connect to remote Tmux
+session and then try to copy text in the 'remote' Tmux session (i.e. using
+`Ctrl`+`b` twice to send Tmux commands to inner Tmux session), then this won't
+work! (Note that you can always copy in the 'outer' Tmux session, i.e. local
+Tmux session, but as stated previously, you won't be able to copy text which is
+'scrolled up' in the inner Tmux session.)
 
-    ssh -X remoteuser@remotehost
+Generally I'm satisfied with the limitation mentioned here. In order to get
+full copying from remote session working, you will need to do something more
+involved, like (here)[http://superuser.com/a/408374/315134]. Do let me know if
+you need a better explanation of that method (e.g. more details on SSH keys and
+enabling remote option on Mac OS X)
 
-Now anything you copy on that system using Tmux will come to local system's
-clipboard.
+## Other information
 
 Done! Don't forget to comment if you know something worth letting everybody
 know! Thank you:)
