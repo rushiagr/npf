@@ -2,7 +2,7 @@
 Categories = ["Development", "Productivity"]
 Description = ""
 Tags = ["Development", "tmux", "ubuntu", "productivity", "quickstart", "tutorial"]
-date = "2016-06-16T10:58:02+05:30"
+date = "2016-06-16T10:59:02+05:30"
 title = "Everything you need to know about Tmux copy paste - Ubuntu"
 type = "post"
 
