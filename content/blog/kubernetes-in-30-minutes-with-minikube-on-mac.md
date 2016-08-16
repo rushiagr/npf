@@ -8,7 +8,7 @@ title = "Kubernetes in 30 minutes with minikube on Mac"
 
 +++
 
-Below are steps to create an express setup of kubernetes on your Mac for quick use.
+Below are steps to create an express setup of Kubernetes on your Mac for quick use.
 
 Minikube is a small setup by Kubernetes guys, which will spawn a virtual machine and have a tiny (but fully functional) Kubernetes cluster inside the VM. `kubectl` (pronounced 'kube (like 'tube') control`) is the command line client you'll use to connect to the Kubernetes cluster (which runs inside the VM created by minikube, in case you forgot :) )
 
@@ -55,7 +55,7 @@ Now list all running docker containers inside the minikube vm. This might throw 
 
     docker ps
 
-If the error is `Error response from daemon: client is newer than server (client API version: 1.24, server API version: 1.23)`, then we need to install
+If it errors with output `Error response from daemon: client is newer than server (client API version: 1.24, server API version: 1.23)`, then we need to install
 an older version of docker along with the current docker server installation.
 
 We'll use DVM (docker version manager) for the same, and we need to install DVM
@@ -63,7 +63,7 @@ first for that.
 
     brew update && brew install dvm
 
-If brew update fails, most of the times re-running `brew update` again fixes
+If `brew update` fails, most of the times re-running `brew update` again fixes
 the problem (else do `brew upgrade && brew update` and wait for an hour for it
 to finish depending upon your internet connection).
 
@@ -82,7 +82,7 @@ Install older docker version 1.11.1
 
 Now if you do `dvm ls` you'll see that your current docker version is 1.11.1.
 
-Now you can use `docker ps` to see all your docker containers for kubernetes
+Now you can use `docker ps` to see all your docker containers for Kubernetes
 running inside minikube.
 
 That's all for this blogpost. I'll write another blog post about how to create your own pods inside this running Kubernetes cluster.
