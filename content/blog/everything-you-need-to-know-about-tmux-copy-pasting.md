@@ -3,7 +3,7 @@ Categories = ["Development", "Productivity"]
 Description = ""
 Tags = ["Development", "tmux", "apple", "productivity", "quickstart", "tutorial"]
 date = "2016-06-16T10:58:02+05:30"
-title = "Everything you need to know about Tmux copy paste - Mac OS"
+title = "Everything you need to know about Tmux copy paste"
 type = "post"
 
 +++
@@ -11,9 +11,7 @@ type = "post"
 Copying from a Tmux session is something every Tmux user struggled with once.
 I'm listing out all the stuff I learnt in this blog.
 
-I tested everything on Mac OS X El Capitan, which runs Tmux version 2.1. To
-check your Tmux version, run `tmux -V`. If you have a Linux (e.g. Ubuntu) machine, see
-[here](http://www.rushiagr.com/blog/2016/06/16/everything-you-need-to-know-about-tmux-copy-pasting-ubuntu/).
+I tested everything on Mac OS X El Capitan. For Ubuntu/Linux guide, see [here](http://www.rushiagr.com/blog/2016/06/16/everything-you-need-to-know-about-tmux-copy-pasting-ubuntu/). Mac OS X El Capitan runs Tmux version 2.1. To check your Tmux version, run `tmux -V`.
 
 ## Know about your terminal
 The default terminal which comes with Mac is pretty limiting. Instead of
