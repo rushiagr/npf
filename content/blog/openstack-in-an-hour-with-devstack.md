@@ -29,7 +29,7 @@ Clone the DevStack repository into your computer and `cd` into it. This is the c
 	git clone http://github.com/openstack-dev/devstack
 	cd devstack/
 
-If you do a `ls`, you will see `stack.sh`, `unstack.sh` and `rejoin-stack.sh` files in there. These are the most important files.
+If you do a `ls`, you will see `stack.sh` and `unstack.sh` files in there. These are the most important files.
 
 	r@ra:~/devstack$ ls
 	accrc         exercises         HACKING.rst  rejoin-stack.sh  tests
@@ -44,17 +44,17 @@ File `stack.sh` is the most important of them all. Running this script will:
 2. Installs all the dependencies these OpenStack projects have -- both in the form of Ubuntu packages, and also the Python "PIP" repositories.
 3. Starts all the OpenStack services with a default configuration.
 
-Bringing down the DevStack-created cloud is easy too -- just invoke the `unstack.sh` script, and all the services are down again, freeing up the memory that these services consume. I'll talk about `rejoin-stack.sh` in some time. Let's get started before I start writing at lengths again :)
+Bringing down the DevStack-created cloud is easy too -- just invoke the `unstack.sh` script, and all the services are down again, freeing up the memory that these services consume. Let's get started before I start writing at lengths again :)
 
 
 Execute the `stack.sh` script
 
-	r@ra:~/devstack$ ./stack.sh 
-	
+	r@ra:~/devstack$ ./stack.sh
+
 	################################################################################
 	ENTER A PASSWORD TO USE FOR THE DATABASE.
 	################################################################################
-	This value will be written to your localrc file so you don't have to enter it 
+	This value will be written to your localrc file so you don't have to enter it
 	again.  Use only alphanumeric characters.
 	If you leave this blank, a random default value will be used.
 	Enter a password now:
@@ -89,9 +89,9 @@ If the script ends with something like this:
 	+ failures=
 	+ '[' -n '' ']'
 	+ set +o xtrace
-	
-	
-	
+
+
+
 	Horizon is now available at http://10.0.2.15/
 	Keystone is serving at http://10.0.2.15:5000/v2.0/
 	Examples on using novaclient command line is in exercise.sh
@@ -124,20 +124,16 @@ Just like `stack.sh` script is used to set up DevStack, `unstack.sh` is used to 
 Note that this will just kill all the process which were running, for which you were able to see the logs inside screen. `unstack.sh` does some cleanups as well along with killing processes.
 
 
-If you had previously run `./stack.sh`, but have brought down the environment, you can bring it up back by executing the `rejoin_stack.sh` script.
-
 NOTE: DevStack environment doesn't persist across reboots!
 
 So you need to bring back up the DevStack environment manually everytime you reboot. Here is where using a virtual machine comes handy. You can take a snapshot of the virtual machine, and then go back to it when you want a clean DevStack environment.
-
-Nonetheless, the best way to reboot is: first execute `unstack.sh` to bring down the current running DevStack instance. Then reboot, and when your machine comes up again, run `rejoin_stack.sh`. If you don't run `unstack.sh`, you will need to execute `stack.sh` again to have the environment up.
 
 ### localrc configurations
 `localrc` is the file where all the local configurations (local = your local machine) are kept.
 
 After first successful `stack.sh` run, will see that a localrc file gets created with the configuration values you specified while running that script.
 
-	$ cat localrc 
+	$ cat localrc
 	DATABASE_PASSWORD=nova
 	RABBIT_PASSWORD=nova
 	SERVICE_TOKEN=nova
@@ -145,14 +141,14 @@ After first successful `stack.sh` run, will see that a localrc file gets created
 	ADMIN_PASSWORD=nova
 
 
-Sometimes you will forget to unstack, and will reboot the machine. And then you will find that running `stack.sh` will again do an `apt-get update`, and check for all packages, etc. 
+Sometimes you will forget to unstack, and will reboot the machine. And then you will find that running `stack.sh` will again do an `apt-get update`, and check for all packages, etc.
 
-If you specify an option `OFFLINE=True` in a file named `localrc`, inside the devstack directory, and if after specifying this you run `stack.sh`, it will not check anything over the Internet, and will set up DevStack using all the packages and code residing in your machine. Setting up a DevStack using this config option will give you a running cloud in the shortest amount of time (after `rejoin_stack.sh`, but you have already forgotten to do `unstack.sh`, right :) ).
+If you specify an option `OFFLINE=True` in a file named `localrc`, inside the devstack directory, and if after specifying this you run `stack.sh`, it will not check anything over the Internet, and will set up DevStack using all the packages and code residing in your machine. Setting up a DevStack using this config option will give you a running cloud in the shortest amount of time).
 
 
 Note that `stack.sh` will see if the git repositories of the OpenStack projects are present in `/opt/stack/` directory. If they are, it will not fetch any latest code into them from Github. But if any of the directory (say, `nova`), is absent, it will pull latest code into the newly created `nova` directory inside `/opt/stack`.
 
-What if you want to get the latest code into all the OpenStack repositories inside `/opt/stack`? Just specify a `RECLONE=yes` parameter in localrc, and rerun `./stack.sh`. This comes particularly handy when you are developing new code. 
+What if you want to get the latest code into all the OpenStack repositories inside `/opt/stack`? Just specify a `RECLONE=yes` parameter in localrc, and rerun `./stack.sh`. This comes particularly handy when you are developing new code.
 
 NOTE: Keep in mind that while developing code, you need to **commit your local changes** in, say, `/opt/stack/nova` repository, before you restack (re-run `stack.sh`) with `RECLONE=yes` option, as otherwise, the changes will be wiped off. Save yourself from a rude shock. You have been warned.
 
