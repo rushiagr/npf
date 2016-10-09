@@ -45,9 +45,9 @@ parameters. For example `mkvm`, the command to create virtual machines:
 
 Commands for resource creation are short and consistent (`mkvm` creates virtual
 machines, `mkkp` creates keypairs, `mksg` create security groups). No need to
-remember AMI IDs (presently it selects Ubuntu 16.04 64-bit image by default for
-you, but in future you might specify an OS name and OS version). All the
-commands supported so far are:
+remember AMI IDs (presently it selects Ubuntu 16.04 64-bit image by default,
+but in future you might specify an OS name and OS version). All the commands
+supported so far are:
 
     lsvm    - List all virtual machines
     mkvm    - Create a virtual machine
