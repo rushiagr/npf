@@ -9,7 +9,7 @@ type = "post"
 For a user of Amazon Web Services, quickly viewing the dashboard of all
 resources is painful. If you use a web browser, your session won't persist
 for more than a day and you will have to re-authenticate every day. If you use
-AWS CLI, then you might not remember the exact command ('was it
+AWS CLI, then you might not remember the exact command (was it
 `aws ec2 describe-key-pair` or `aws ec2 describe-keypair` or
 `aws ec2 describe-keypairs`?) but even if you do, the output is a JSON. For viewing
 virtual machines, you might not need to see hundreds of lines of details of
@@ -33,7 +33,7 @@ a keypair is `aws ec2 create-key-pair` but creating a virtual machine is not
 `aws ec2 create-instance` but `aws ec2 run-instances`.
 
 To alleviate these pains, I created a simple CLI tool called "[CCH - Cloud CLI
-for Humans](http://github.com/rushiagr/aclih)". Just typing `lsvm` prints all
+for Humans](http://github.com/rushiagr/cch)". Just typing `lsvm` prints all
 the virtual machines you have in the cluster. Each command can be run without
 passing a parameter to it. If an operation requires additional parameters and
 you didn't specify it for the first time, it'll ask you to input those
@@ -119,7 +119,7 @@ Create a virtual machine
     Select flavor ['l' to list]: t2.micro
     Available key pairs: ['rushi-kp-1', 'prod-keypair', 'test-keypair']
     Select keypair: rushi-kp-1
-    Available security groups: ['Rushi SecGroup', 'openToAll', 'Rushi SG', 'Rushi Devstack SG']
+    Available security groups: ['Rushi SecGroup', 'openToAll']
     Select security group. None to create new one: Rushi SecGroup
     Enter root volume size in GBs: 8
     r@rushi:~$
