@@ -6,20 +6,27 @@ title = "About"
 	weight = 1
 +++
 
-Hello, my name is Rushi Agrawal and I'm a software engineer by profession.
-Currently I'm working in Bangalore as a consultant to a stealth-mode startup,
-taking care of backend and ReSTful APIs of the startup. I was a software
-development engineer at Reliance Jio Cloud, and NetApp before this stint.
 
-Programming is something I've been passionate about since last 7 years. My
-primary languages of development are Python and shell scripts. I dabble wih Go
-too nowadays.
+Hello! I am Rushi Agrawal, and I help companies succeed by **creating great software**.
+
+I work as a software consultant and engineering lead at a startup. I code primarily in Python and shell scripts. I have brought two products of that startup to launch as a core engineer.
+
+I created and contributed to a few open source projects too. Also, in my previous employment, I was the chief engineer for developing relational database service for their infrastructurec cloud.
+
+Following are the consulting services I provide to my clients:
+
+**Engineering**: I write code from day one to tackle your tough problems. I have written code for developing ReST APIs for about a dozen different projects. I also have written front-end for five projects, four of them in web technologies and one in Android.
+
+**Mentorship and code review**: I help developers reach their full productivity by removing obstacles in their path and by empowering them with the resources and guidance they need.
+
+**Architecture**: I design architecture based on your requirements, with an eye on future scope of expansion of work as well as human resources. I make sure software quality is high regardless of the duration or value of the project. For example, depending upon your scale, I will tell you if a non-relational database is a better fit for your team, not only in terms of scaling but also in terms of different failure modes it introduces and operational cost of that database.
+
+
+I have deep interest in distributed systems, especially distributed databases. However, I still think that a vast majority of engineering problems in this world can be solved by existing relational databases like PostgreSQL.
 
 I graduated from IIT Hyderabad in 2012 with a Bachelors degree in Computer
-Science and Engineering. Before that, I lived at and did my schooling from my
-hometown Shegaon near Nagpur.
+Science and Engineering. Before that, I did my schooling from my hometown
+Shegaon near Nagpur.
 
-When not developing software, I watch and read about cricket, keep myself fit
-by exercising or jogging, explore the country, or reading tech blogs.
-I want to plant a lot of trees when I will get to stay at a house for more than
-3 years at a stretch.
+When not thinking about software, I watch and read about cricket. I also have
+interest in social welfare and philanthrophy.
