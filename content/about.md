@@ -30,3 +30,7 @@ Shegaon near Nagpur.
 
 When not thinking about software, I watch and read about cricket. I also have
 interest in social welfare and philanthrophy.
+
+**Contact me** via email at **rushi.agr@gmail.com**, or via phone at **+91 99-4518-4519**.
+
+Thank you for your time.
