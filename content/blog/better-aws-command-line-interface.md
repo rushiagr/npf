@@ -121,6 +121,6 @@ Create a virtual machine
     Enter root volume size in GBs: 8
     r@rushi:~$
 
-Any feedback is welcome. Create a PR or issue, or comment below!
+Think this makes sense/no sense? Please write a comment below. Create a PR or issue for CCH development. I should totally think of a better name for the CLI tool :)
 
 Thank you :)
