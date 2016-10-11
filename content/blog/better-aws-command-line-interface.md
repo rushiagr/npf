@@ -6,31 +6,28 @@ type = "post"
 +++
 
 
-For a user of Amazon Web Services, quickly viewing the dashboard of all
-resources is painful. If using a web browser, the session won't persist
-for more than a day and one will have to re-authenticate every day. If using
-AWS CLI, then he/she might not remember the exact command (was it
-`aws ec2 describe-key-pair` or `aws ec2 describe-keypair` or
-`aws ec2 describe-keypairs`?) but even if they do, the output is a not-so-readable JSON. For viewing
-virtual machines, you might not want to see hundreds of lines of detail of
-your virtual machines. Maybe you just wanted to see the IP of the VM so that
-you can SSH into it. And maybe you just wanted to quickly create a virtual
-machine to test something: do you remember all
-the parameters you need to specify for instance creation? And don't forget that
-you will need to specify the AMI ID of the image, even if you exactly know
-which distribution and version of operating system you want the virtual machine
-to have.
+For a user of Amazon Web Services, quickly viewing a dashboard of all resources
+is not straightforward. If using a web browser, the session won't persist for
+more than a day and one will have to re-authenticate every day. If using AWS
+CLI, then he/she might not remember the exact command (was it
+`describe-key-pair` or `describe-keypair` or `describe-keypairs`?) but even if
+they do, the output is a not-so-readable JSON. For viewing virtual machines,
+you might not want to see hundreds of lines of detail.
+Maybe you just wanted to see the IP of the VM so that you can SSH into it. Or
+maybe you just wanted to quickly create a virtual machine to test something: do
+you remember all the parameters you need to specify for instance creation? And
+don't forget that you will need to specify the AMI ID of the image, even if you
+know exactly the operating system name and version.
 
-There is no doubt that AWS CLI is a phenomenal piece of work. It allows you to
-do absolutely everything you can do with Amazon's cloud offering. The
-documentation is thorough and it is great for automation too, as the only
-thing one needs to do is to parse the JSON output. However, it's not as
+There is no doubt that AWS CLI is an impressive piece of work. It allows you to
+do absolutely everything with their cloud. The
+documentation is thorough. It is great for automation too -- output is easily parse-able JSON. However, it's not as
 human-friendly. It doesn't tell you which options are mandatory and which are
-optional. It doesn't remind you if you forget to specify the keypair for an
-instance which generally results in Google-searching 'aws cli delete instance'
-and creating another instance. The CLI has some inconsistencies too -- creating
-a keypair is `aws ec2 create-key-pair` but creating a virtual machine is not
-`aws ec2 create-instance` but `aws ec2 run-instances`.
+optional. It doesn't remind you if you forget to specify keypair while creating an
+instance. You end up deleting that instance, then Google-searching 'aws cli delete instance'
+and finally creating another instance. The CLI has some inconsistencies too -- creating
+a keypair is `create-key-pair` but creating a virtual machine is not
+`create-instance` but `run-instances`.
 
 To alleviate these pains, I created a simple CLI tool called "[CCH - Cloud CLI
 for Humans](http://github.com/rushiagr/cch)". Just typing `lsvm` prints all
