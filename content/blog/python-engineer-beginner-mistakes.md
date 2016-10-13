@@ -4,7 +4,7 @@ Description = ""
 Tags = ["Development", "python", "vim", "git", "programming", "django"]
 date = "2016-10-11T17:59:46+05:30"
 type = "post"
-title = "Python Beginner Mistakes"
+title = "Python Engineer Beginner Mistakes"
 
 +++
 
