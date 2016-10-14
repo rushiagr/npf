@@ -20,7 +20,7 @@ This is while specifying a synced folder in my `Vagrantfile` with this line:
     config.vm.synced_folder("/Users/apple/src/myutils", "/home/ubuntu/myutils")
 
 where [myutils](https://github.com/rushiagr/myutils) is where I keep all my
-commanline shortcuts, tricks, and other shortcut-ish stuff. I Googled but
+commandline shortcuts, tricks, and other shortcut-ish stuff. I Googled but
 couldn't find an article which described a way to fix this in one go, hence
 this blog post :)
 
@@ -41,4 +41,6 @@ things:
    `Vagrantfile` accordingly.
 
 Cheers!
-Rushi
+
+- Rushi
+
