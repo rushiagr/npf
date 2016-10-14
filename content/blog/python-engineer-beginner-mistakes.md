@@ -9,36 +9,37 @@ title = "Python Engineer Beginner Mistakes"
 +++
 
 I am writing Python code since 5 years, and I have worked with around 5-6
-entry-level Python programmers. There is a pattern I can see in the programming
-practices of such programmers, so I am listing the problems and their solutions
-in this article. I have worked with OpenStack for over three years, which has a
-very high code quality, so I feel I am qualified enough for writing this post.
-My hope is this will be helpful for more entry-level Python programmers.
+entry-level Python programmers. There is a pattern I can see in their programming
+practices. My hope is by reading this article there will be lesser such
+mistakes.
 
-I'll start with talking about these beginner-programmers first. The people I
-have worked with are not only self-taught Python programmers, but who also
-worked in startups in Bangalore. For self-taught Python programmers, it is
-understandable -- Python is a pretty easy language to pick up and code, so
-there is really no motivation for them to go with best practices right from the
-start, especially when all they can find is a huge list of good programming
-practices and PEP8 conventions to follow. For Python beginners working in
-startups, I am guessing there are not enough senior Python programmers who can
-teach them about required best practices.
+I have worked on OpenStack for over three years, which is written in Python
+and has a very high code quality, so I feel I am qualified enough to write this
+post.
+
+I'll start with talking about these beginner-programmers first. Some of the
+people I have worked with are self-taught programmers but majority of them are
+junior developers working in startups in Bangalore. For self-taught Python
+programmers, such mistakes are understandable -- Python is a pretty easy
+language to pick up and code, so they don't really have a motivation to go with
+best practices right from the start. Even if they googled 'Python best
+programming practices', they will find a really big list of practices without
+any indication about which ones are the most important and absolutely must be
+followed right from the start.  For Python beginners working in startups, I am
+guessing there are not enough senior Python programmers who can teach them the
+required best practices.
 
 In this article I'm going to list the bare-minimum of these simple practices
 you should follow. Surprisingly, most of the 'Beginner Python mistakes to
 avoid' articles on the web don't talk about the bad practices I encounter. I
-think they just assume such simple things are taken care of by a programmer,
-my experience tells otherwise.
-
-Note that this is just the beginning. There's a TON of things you should worry
-about, but you'll learn them as you grow. Don't worry :)
+think they just assume such simple things are taken care of by a programmer.
+My experience tells otherwise.
 
 ## Indentation, tabs and spaces.
 Never use tabs. Only use spaces. Use 4 spaces for a tab, always.
 
 
-I frequently see codes which use a mix of spaces and tabs, and 2-space and
+I frequently see codes which use a mix of spaces and tabs, and mix of 2-space and
 4-space indentations all in one file!  If you are coming from a different
 language, or if you already have a notion of, say, 8 spaces for a tab, then it
 might be difficult and seem unnecessary at first. But I am guessing you are
@@ -57,16 +58,18 @@ Don't write like this:
         # handle exception
 
 Catching the parent `Exception` is bad. If you know what exception the code is
-going to throw, just except that exception. The most common example I have seen
+going to throw, just `except` that specific exception. The most common example I have seen
 is when calling `get()` method on a Django's model. If the object is not
 present, Django throws `ObjectDoesNotExists` exception. Catch _this_ exception,
 not Exception.
 
 Most often, you do some corrective action in the 'handling exception' part. If
 you are excepting (if there's a word 'excepting') `Exception`, then you are
-heading straight into this 'handling exception' section no matter what has
-happened. Your database might be down but the 'database down' exception might
-still be caught and probably silently ignored of you do this.
+heading straight into this 'handling exception' section no matter what
+exception occurred. If your database is down, the 'DatabaseIsDown' (I made up
+that name) exception
+will also be caught! This might make debugging extremely hard when your app
+grows big or you start getting a lot of users.
 
 ## Trailing whitespaces
 In context of Python, whitespaces means space characters. There should be no
@@ -85,7 +88,7 @@ modified.
 ## Edge cases first. Shallow nesting.
 
 Consider two pseudo codes. These are codes for handling a request, but you can
-altogether ignore that fact and it would still make sense:
+altogether ignore that fact.
 
 Pseudo code 1:
 
@@ -120,7 +123,7 @@ Pseudo code 2:
 
 As you can see, the second code is much easier to read. You will also notice
 that the second code doesn't have a lot of nesting, which avoids common
-problems. Can you see that I have not written an 'else' section? If the core
+problems. Can you see that I have not written one 'else' section? If the core
 logic is several dozens of lines long, it becomes difficult to find out which
 `else` belongs to which `if` if we write in 'Pseudo code 1' style.
 
@@ -129,10 +132,10 @@ very minimal effort you can very soon get used to writing code in 'pseudo code
 2' style.
 
 
-The following are minor, probably opinionated suggestions. These might apply to
+The suggestions mentioned below are minor, probably opinionated ones. These might apply to
 not only Python but any programming language. I feel that these points are
 important enough that you should start a habit of adhering to them right from
-the start. It'll help you in the long run, trust me :)
+the start. It'll help you in the long run.
 
 ## Make commit messages lengthy
 This is a fairly general trend I see. The commit messages such people generally
@@ -141,11 +144,11 @@ as version control system. In git, such people have gotten used to using `git
 commit -m "your commit message here"` command. If you use this command, I am
 sure you won't even feel like writing a commit message more than what fits in
 one line :). Do you know that you can just type `git commit` and it will open
-up an editor (vim or nano) to write the commit message? Start using this way,
-and stop using `-m` flag directly on command line. It'll help you and your
-colleagues :).
+up an editor (vim or nano) to write the commit message? Start using this
+and stop using `-m` flag directly on command line. Your colleagues and your
+future self will be thankful to you :).
 
-I generally prefer to write a short description in the first line of commit
+I generally prefer writing a short description in the first line of commit
 message, then leave a blank line, and then write a paragraph after that to
 explain in more detail if required. The first line is the most important. Try
 to describe as much as possible concisely in this single line. But don't ever
@@ -163,7 +166,7 @@ You might feel that it's a lot of effort to write such log git commit messages.
 But you can realise it'll not take more than 2 minutes to write this. Much less
 than how much time you spent writing code corresponding to this commit :)
 
-Note that commit messages are important part of documentation, and are
+Again, remember that commit messages are important part of documentation, and are
 extremely important for debugging later.
 
 ## Do only one thing in a commit
@@ -173,8 +176,8 @@ of these bugfixes are just a couple of lines. If you are doing a feature work,
 then it's okay to put all the feature work in one single commit, but for a
 bugfixes, create a separate commit for each one. As you can see, you should get
 comfortable with the idea that a commit can be as short as one line and as
-large as couple of hundred of lines.  Let go of the feeling that your brain has
-about lines in a commit, that it feels right only when there are 50-100 lines
+large as couple of hundred of lines.  Let go of the feeling which your brain has
+about number of lines in a commit, that it feels right only when there are about 50-100 lines
 in a commit. :)
 
 If you are using git, take use of `git add -p` to add specific chunks of code
@@ -188,7 +191,7 @@ I am realizing I can actually write 'Git beginner mistakes' as a separate blog
 
 ## Spaces after comma and colon
 
-Just make this a habit. It improves your code quality.
+Just make this a habit. It improves your code readability.
 
 Example 1 - bad:
 
@@ -202,7 +205,7 @@ Example 2 - good:
 
 Example 3 - bad:
 
-    request_dict = {'name':name,'height':height}
+    request_dict={'name':name,'height':height}
 
 Example 4 - good:
 
@@ -224,12 +227,12 @@ While writing code, you realize it can be improved, but you don't want to
 improve it right now as it is not that important thing at this moment. What
 should you do? Just create a TODO! I find this a very good compromise for
 smaller tasks, instead of creating an issue in an issue/bug tracker. TODOs can
-be written for improving on docstrings (`TODO(rushiagr): add more description
-here`), a more optimised version of code (e.g. `TODO(rushiagr): can be
-optimised by using list comprehensions instead of the 'for' loop`), or a
-refactoring (`TODO(rushiagr): create a common method of this thrice-duplicated
-code`). The parenteses specify who wrote the TODO, which can be helpful if
-somebody wants to fix the todo but doesn't know who to contact for more
+be written for improving on docstrings (TODO(rushiagr): add more description
+here), a more optimised version of code (e.g. TODO(rushiagr): can be
+optimised by using list comprehensions instead of the 'for' loop), or a
+refactoring (TODO(rushiagr): create a common method of this thrice-duplicated
+code). The parenteses specify who wrote the TODO, which can be helpful if
+somebody wants to fix the TODO but doesn't know who to contact for more
 information. But you can leave this part out too.
 
 I use TODOs so much that I created a Vim abbreviation for it, so that as soon
@@ -237,6 +240,15 @@ as I type `#t` followed by a space, it auto-completes it to `# TODO(rushiagr):
 `. If you're using Vim, you can do by adding this line to your `.vimrc`:
 
     :abbreviate #t # TODO(rushiagr):
+
+### Parting words
+My architect at Reliance used to say this: 'You should not be able to
+tell by looking at code who wrote that code'. What he meant was, one should not
+be able to introduce his/her specific style of writing code into code base. Code
+should be written using a convention generally accepted by the whole of the
+team. It might not completely include everything of the best-practices of that
+language, but your team should decide what programming practices can't be
+compromised.
 
 That's all folks! :) Do let me know what you feel about this blog by
 commenting. Do you know something which you too encountered a lot which is not
