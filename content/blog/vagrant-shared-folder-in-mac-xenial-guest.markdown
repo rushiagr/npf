@@ -41,6 +41,5 @@ things:
    `Vagrantfile` accordingly.
 
 Cheers!
-
-- Rushi
+-Rushi
 
