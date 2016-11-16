@@ -29,7 +29,7 @@ The way to detach from a screen is `CTRL+A` `D`, that is, first press `CTRL+A`, 
 
 You will see names of all the screens at the bottom of the terminal. The screen on which you currently are bears an asterisk (`*`) near its name. To move to the right screen, do a `CTRL+A` `N`. Keep in mind that you are going to use `CTRL+A` a lot of times during your adventures with screen. Similar to the command `CTRL+A` `N` to move to the right (“next”) screen, to move to the left screen the command is `CTRL+A` `P`.
 
-There is one more way to jump directly to a screen. Lets say you want to directly jump to the fourth screen. You just need to do a `CTRL+A` `4`, to go to fourth screen! Wasn’t that easy? But hey! How do I get to the seventeenth screen? Frankly, I don’t know a ‘direct’ way. I do a `CTRL+A` `9` once, and `CTRL+A` `N` eight more times. :( If you have a better way, please do tell me.
+There is one more way to jump directly to a screen. Lets say you want to directly jump to the fourth screen. You just need to do a `CTRL+A` `4`, to go to fourth screen! Wasn’t that easy? But hey! How do I get to the seventeenth screen? Frankly, I don’t know a ‘direct’ way. I do a `CTRL+A` `9` once, and `CTRL+A` `N` eight more times. :( Alternatively, you can do `CTRL+A` `"` to view a list of all running screens, and then you can select a screen by using your arrow keys and finally pressing `ENTER`.
 
 Navigating inside a screen
 
