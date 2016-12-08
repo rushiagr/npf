@@ -11,9 +11,10 @@ title = "Cassandra server in 10 minutes"
 Want to quickly find out how a Cassandra server feels? In this blog post, we'll
 create a single-node Cassandra cluster on an Ubuntu Xenial (16.04) system. It's
 not really a 'cluster', but you can access the Cassandra shell `cqlsh` and try
-out all of its commands. Since we are just looking for a quick try-out, we're
-installing one of the latest Cassandra versions -- version 3.7. OK let's get
-started.
+out all of its commands. Since we are just looking for a quick start, we're
+installing one of the latest Cassandra versions -- version 3.7. Even more, the
+steps here are totally scriptable, so you can just blindly paste the lines and
+it'll work! OK let's get started.
 
 Note: Jump straight to the last portion to get all the commands at one place
 without explanation
@@ -78,8 +79,8 @@ of `nodetool` utility.
 
     sudo nodetool status
 
-The state should be `UN`, i.e. 'U'p and 'N'ormal. If it is not in this state,
-then wait a few seconds and it will be.
+The state should be `UN`, i.e. 'U'p and 'N'ormal. If the output is different,
+then wait a few seconds and try again.
 
 There are a few more steps to get the `cqlsh` command line utility working.
 Let's get them done too.
@@ -91,7 +92,7 @@ ways to install `pip`.
     sudo apt-get install --yes --quiet python-pip
 
 Now install pip package `cassandra-driver`. You can install it in virtual
-environment also. You can safely ignore the last statement if you have never
+environment also. You can safely ignore my last sentence if you have never
 heard the term 'Python virtual environments' before.
 
     sudo pip install cassandra-driver
@@ -119,6 +120,26 @@ and log back in, you need to re-run this command.
 
 Now you can follow any `cqlsh` tutorial to try out commands to create
 keyspaces, tables, rows, etc.
+
+### Everything at one place
+You can just paste these lines in a file and run that file as a script, and it'll set everything up for you.
+
+    cd /tmp
+    wget http://eezydb.s3.amazonaws.com/server-jre-8u101-linux-x64.tar.gz
+    sudo mkdir -p /usr/lib/jvm
+    sudo tar -xzvf server-jre-8u101-linux-x64.tar.gz -C /usr/lib/jvm
+    sudo update-alternatives --install "/usr/bin/java" "java" "/usr/lib/jvm/jdk1.8.0_101/bin/java" 1
+    sudo update-alternatives --set java /usr/lib/jvm/jdk1.8.0_101/bin/java
+    echo "deb http://www.apache.org/dist/cassandra/debian 37x main" | sudo tee -a /etc/apt/sources.list
+    echo "deb-src http://www.apache.org/dist/cassandra/debian 37x main" | sudo tee -a /etc/apt/sources.list
+    gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 749D6EEC0353B12C
+    sudo apt-key add ~/.gnupg/pubring.gpg
+    sudo apt-get --yes --quiet update
+    sudo apt-get install --yes --quiet cassandra python-pip
+    sudo pip instlal cassandra-driver
+    export CQLSH_NO_BUNDLED=true
+    cqlsh
+
 
 If you like this, please share! If you have any suggestions, please comment!
 
