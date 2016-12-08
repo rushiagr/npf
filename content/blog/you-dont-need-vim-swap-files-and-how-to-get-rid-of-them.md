@@ -14,13 +14,13 @@ Estimated reading time: 5 minutes.
 Almost all IDEs today have 'autosave' feature. That is, you don't need to
 explicitly save a file. The file is automatically saved as you type, so that
 even if your computer crashes, you don't lose data. This makes me wonder why
-does Vim's default behavior is of using swap files. Swap files are annoying.
+Vim's default behavior is of using swap files. Swap files are annoying.
 I've seen all Vim developers, including me, struggle with swap files at one
 point in their life.
 
 There is a Vim plugin for autosaving, and it has saved a lot of my time. I have
 used the plugin such that every time I enter normal mode (after making edits in
-Insert mode), it autosaves file. And, most importantly, I have disabled swap
+Insert mode), it autosaves file. And more importantly, I have disabled swap
 file creation by Vim. It's really that simple folks. You don't really need swap
 files 99.99% of the times.
 
@@ -79,6 +79,8 @@ files' mode:
     'two', and in another terminal when you add the second line saying 'three',
     we have a conflict. This is because we are writing 'three' at line number 2
     where 'two' is alredy written (from another terminal)
+
+After reading these 'things to note', you might be thinking if it is really a good idea to autosave. Everybody is entitled to have an opinion. My opinion is that over a longer time period, getting rid of swap files saved me much more headache. I just have to be careful while exiting files.
 
 I hope this helps. Questions, comments, suggestions, feedback? Comment :)
 
