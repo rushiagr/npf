@@ -11,7 +11,7 @@ Hello! I am Rushi Agrawal, and I help companies succeed by **creating great soft
 
 I work as a software consultant and engineering lead at a startup. I code primarily in Python and shell scripts. I have brought two products of that startup to launch as a core engineer.
 
-I created and contributed to a few open source projects too. Also, in my previous employment, I was the chief engineer for developing relational database service for their infrastructurec cloud.
+I created and contributed to a few open source projects too. Also, in my previous employment, I was the chief engineer for developing relational database service for their infrastructure cloud.
 
 Following are the consulting services I provide to my clients:
 
