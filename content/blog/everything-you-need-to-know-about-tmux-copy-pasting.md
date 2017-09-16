@@ -51,6 +51,12 @@ copy-pasting shortcuts!
         bind-key -t vi-copy 'y' copy-selection
         bind-key -t vi-copy 'r' rectangle-toggle
 
+    Note that for a newer tmux version (2.4 and above I think, not sure), the last three lines should be replaced with:
+
+        bind-key -T copy-mode-vi v send-keys -X begin-selection
+        bind-key -T copy-mode-vi y send-keys -X copy-selection
+        bind-key -T copy-mode-vi r send-keys -X rectangle-toggle
+
 2. Now you can enter copy mode by pressing `CTRL`+`b`,`[`, and then go
    to start point, press 'v' and start copying. After you have selected text
    you want to copy, you can just press 'y' (or the default 'enter' key) to

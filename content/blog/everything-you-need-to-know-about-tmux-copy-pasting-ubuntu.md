@@ -11,7 +11,7 @@ type = "post"
 Copying from a Tmux session is something every Tmux user struggled with once.
 I'm listing out all the stuff I learnt in this blog.
 
-I tested everything on Ubuntu 14.04 Trusty Tahr, which runs Tmux version 1.8.
+I tested everything on Ubuntu 14.04 Trusty Tahr, which runs Tmux version 1.8 (I have a few commands included for Tmux version 2+ also)
 To check your Tmux version, run `tmux -V`. If you have a Mac, see
 [here](http://www.rushiagr.com/blog/2016/06/16/everything-you-need-to-know-about-tmux-copy-pasting/).
 
@@ -49,6 +49,12 @@ copy-pasting shortcuts!
         bind-key -t vi-copy 'y' copy-selection
         bind-key -t vi-copy 'r' rectangle-toggle
 
+    Note that for a newer tmux version (2.4 and above I think, not sure), the last three lines should be replaced with:
+
+        bind-key -T copy-mode-vi v send-keys -X begin-selection
+        bind-key -T copy-mode-vi y send-keys -X copy-selection
+        bind-key -T copy-mode-vi r send-keys -X rectangle-toggle
+
 2. Now you can enter copy mode by pressing `CTRL`+`b`,`[`, and then go
    to start point, press 'v' and start copying. After you have selected text
    you want to copy, you can just press 'y' (or the default 'enter' key) to
@@ -79,6 +85,9 @@ mouse drag. For doing that, you just need to add this line to your
     setw -g mode-mouse on
     set -g mouse-select-window on
 
+Note that if your tmux version is 2.1 or above, you need to include the following line instead of the above two
+
+    set -g mouse on
 
 ## But now I can't do normal copy-paste with mouse!
 You'll notice that now all your selections will go to tmux buffer, and not
